@@ -2,7 +2,7 @@
 
 # **docsify-demo**
 
-- kirito的 ```docsify```文档示例<br>东方project、鹿乃、狗妈<br>
+- kirito的 ```docsify```文档示例<br>2333<br>
 
 [![stars](https://badgen.net/github/stars/mochazi/docsify-demo?color=4ab8a1)](https://github.com/mochazi/docsify-demo)
 [![forks](https://badgen.net/github/forks/mochazi/docsify-demo?color=4ab8a1)](https://github.com/mochazi/docsify-demo)
