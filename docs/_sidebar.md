@@ -1,11 +1,11 @@
 - 前言
     - [简介](zh-cn/README.md)
-    
-- Java
-    - [RocketMQ](zh-cn/Java/rocketmq.md)
 
 - docker
     - [docker](zh-cn/docker/docker.md)
+    
+- Java
+    - [RocketMQ](zh-cn/Java/rocketmq.md)
 
 - Python
     - [基础](zh-cn/Python/base.md)
