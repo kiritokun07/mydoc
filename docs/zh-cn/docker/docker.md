@@ -8,6 +8,12 @@ systemctl start docker
 systemctl enable docker
 ```
 
+## docker 运行redis
+```
+docker pull redis
+docker run -d --name myredis -p6380:6379 -v /d/dockerdata/redis/data:/data redis --appendonly yes
+```
+
 ## 安装Speedtest：
 `docker run -d -p 6688:80 ilemonrain/html5-speedtest:alpine --restart=always`
 
