@@ -41,3 +41,14 @@ echo mount -t cifs //192.168.1.235/dockertest /home/smb -o username=docker,passw
 chmod 755 /etc/rc.local
 chmod -R 755 /etc/rc.d
 ```
+
+## docker 安装minio
+https://mp.weixin.qq.com/s/kvLZRqgm1lEITm1j6rzJ0A
+
+https://www.jianshu.com/p/52dbc679094a
+```
+docker run -p 9090:9000 --name minio1 -d --restart=always -e MINIO_ACCESS_KEY=minio -e MINIO_SECRET_KEY=minio@321 -v /data/docker/minio/data:/data -v /data/docker/minio/config:/root/.minio minio/minio server /data --console-address ":9000" --address ":9090"
+```
+
+Docker minio 安装中的一些错误
+https://blog.csdn.net/qq_44924407/article/details/119064437
