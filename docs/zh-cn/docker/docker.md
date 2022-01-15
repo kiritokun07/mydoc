@@ -8,7 +8,7 @@ systemctl start docker
 systemctl enable docker
 ```
 
-## docker 运行redis
+## docker 安装redis
 ```
 docker pull redis
 docker run -d --name myredis -p6380:6379 -v /d/dockerdata/redis/data:/data redis --appendonly yes
@@ -52,3 +52,16 @@ docker run -p 9090:9000 --name minio1 -d --restart=always -e MINIO_ACCESS_KEY=mi
 
 Docker minio 安装中的一些错误
 https://blog.csdn.net/qq_44924407/article/details/119064437
+
+## docker 安装jenkins
+TODO
+
+## docker 安装nexus
+TODO
+
+
+
+
+
+
+
