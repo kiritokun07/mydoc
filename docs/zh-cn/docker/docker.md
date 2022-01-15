@@ -8,8 +8,9 @@ systemctl start docker
 systemctl enable docker
 ```
 
-## docker 运行redis
+## docker 安装redis
 ```
+docker search redis
 docker pull redis
 docker run -d --name myredis -p6380:6379 -v /d/dockerdata/redis/data:/data redis --appendonly yes
 ```
