@@ -150,3 +150,149 @@ public void test_Function() {
     stream1.forEach(System.out::println);
 }
 ```
+
+#### Runnable：无请求参数无返回参数
+
+
+## 妙用“Function”消灭if...else
+> https://juejin.cn/post/7011435192803917831
+
+#### 抛异常接口
+```
+@FunctionalInterface
+public interface ThrowExceptionFunction {
+
+    /**
+     * 抛出异常信息
+     *
+     * @param message 异常信息
+     * @return void
+     **/
+    void throwMessage(String message);
+
+}
+```
+
+#### 空值与否分支处理
+```
+/**
+ * 空值与非空值分支处理
+ */
+public interface PresentOrElseHandler<T> {
+
+    /**
+     * 值不为空时执行消费操作
+     * 值为空时执行其他的操作
+     *
+     * @param action      值不为空时，执行的消费操作
+     * @param emptyAction 值为空时，执行的操作
+     * @return void
+     **/
+    void presentOrElseHandle(Consumer<? super T> action, Runnable emptyAction);
+
+}
+```
+
+#### 分支处理操作
+```
+/**
+ * 分支处理接口
+ **/
+@FunctionalInterface
+public interface BranchHandle {
+
+    /**
+     * 分支操作
+     *
+     * @param trueHandle  为true时要进行的操作
+     * @param falseHandle 为false时要进行的操作
+     * @return void
+     **/
+    void trueOrFalseHandle(Runnable trueHandle, Runnable falseHandle);
+
+}
+```
+
+#### 工具类
+```
+public class VUtils {
+
+    /**
+     * 如果参数为true抛出异常
+     *
+     * @param b
+     * @return com.example.demo.func.ThrowExceptionFunction
+     **/
+    public static ThrowExceptionFunction isTure(boolean b) {
+
+        return (errorMessage) -> {
+            if (b) {
+                throw new RuntimeException(errorMessage);
+            }
+        };
+    }
+
+    /**
+     * 参数为true或false时，分别进行不同的操作
+     *
+     * @param b
+     * @return com.example.demo.func.BranchHandle
+     **/
+    public static BranchHandle isTureOrFalse(boolean b) {
+
+        return (trueHandle, falseHandle) -> {
+            if (b) {
+                trueHandle.run();
+            } else {
+                falseHandle.run();
+            }
+        };
+    }
+
+    /**
+     * 参数为true或false时，分别进行不同的操作
+     *
+     * @param str
+     * @return com.example.demo.func.BranchHandle
+     **/
+    public static PresentOrElseHandler<?> isBlankOrNoBlank(String str) {
+
+        return (consumer, runnable) -> {
+            if (str == null || str.length() == 0) {
+                runnable.run();
+            } else {
+                consumer.accept(str);
+            }
+        };
+    }
+
+}
+```
+
+#### 测试方法
+```
+@Test
+public void isTrue1() {
+    VUtils.isTure(true).throwMessage("抛异常了");
+}
+
+@Test
+public void isTrueOrFalse() {
+    VUtils.isTureOrFalse(false)
+            .trueOrFalseHandle(() -> System.out.println("true 了"), () -> System.out.println("false 了"));
+}
+
+@Test
+public void isBlankOrNotBlank() {
+    VUtils.isBlankOrNoBlank("")
+            .presentOrElseHandle(System.out::println, () -> System.out.println("空字符串"));
+}
+```
+
+
+
+
+
+
+
+
