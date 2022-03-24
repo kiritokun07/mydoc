@@ -6,6 +6,7 @@
     
 - Java
     - [RocketMQ](zh-cn/Java/rocketmq.md)
+    - [Consumer Supplier Predicate Function](zh-cn/Java/Consumer_Supplier_Predicate_Function.md)
 
 - Python
     - [基础](zh-cn/Python/base.md)
